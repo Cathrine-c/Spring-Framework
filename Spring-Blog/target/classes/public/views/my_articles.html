@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人博客文章</title>
+</head>
+<body>
+<div id="app">
+    <button v-on:click="addArticle()">新增</button>
+    <ul>
+        <li v-for="article in articles">
+            {{ article.title }}
+            <button v-on:click="editArticle(article.id)">修改</button>
+            <button v-on:click="deleteArticle(article.id)">删除</button>
+        </li>
+    </ul>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            articles: [{
+                id: 1,
+                title: "写在前面的话",
+                content: "html",
+            }, {
+                id: 2,
+                title: "文章个人show",
+                content: "js",
+            }],
+        },
+        methods: {
+            addArticle: function(){
+                alert("新增")
+            },
+            editArticle: function(id){
+                alert(id)
+            },
+            deleteArticle: function (id) {
+                alert(id)
+            }
+        }
+    })
+</script>
+</body>
+</html>

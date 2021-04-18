@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>博客*首页</title>
+
+</head>
+
+<body>
+
+<div id="app">
+
+    <h2>*csdn博客*</h2>
+
+<!--  js中if判断可以用任意类型，和java有点不同-->
+    <a v-if="user.name" href="my_articles.html">个人博客</a>
+    <a v-if="!user.name" href="login.html">登录</a>
+
+<!--    <button v-on:click="addArticle()">新增</button>-->
+
+    <ul>
+        <li v-for="article in articles">
+            {{article.title}}
+<!--            <button v-on:click="editArticle(article.id)">修改</button>-->
+<!--            <button v-on:click="deleteArticle(article.id)">删除</button>-->
+
+        </li>
+    </ul>
+
+
+     <!--    绑定点击事件，触发js方法执行-->
+<!--    <button v-on:click="counter +=1">Add 1</button>-->
+<!--    <p>The button above has been clicked{{counter}} times.</p>-->
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<!--对象绑定属性值，部署到页面-->
+<script>
+    var app=new Vue({
+        el:'#app',
+        data:{
+
+            user:{
+               //name:"北北"
+
+            },
+
+            articles:[
+            //     {
+            //     id:1,
+            //     title:"冒泡排序",
+            //     content:"html",
+            //
+            // },{
+            //     id:2,
+            //     title:"快速排序",
+            //     content:"js",
+            // }
+            ],
+        },
+
+
+        methods:{
+            // addArticle:function(){
+            //
+            //     alert("新增")
+            // },
+            //
+            // editArticle:function(){
+            //     alert(id)
+            // },
+            // // 删除文章
+            // deleteArticle:function () {
+            //
+            //     alert(id)
+            //
+            // }
+
+        },
+
+        created: function () {
+            axios.get(
+                "/article/query"
+            ).then(function (resp){//正确·响应状态码200进入then,resp包含状态码、header
+                //打印出来看看resp
+                console.log(JSON.stringify(resp))
+
+            }).catch(function (error) {
+                alert("出错了\n"+JSON.stringify(error))
+
+            });
+
+        }
+
+
+    })
+
+</script>
+</body>
+</html>
