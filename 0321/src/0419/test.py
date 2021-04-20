@@ -40,5 +40,6 @@ time.sleep(8)
 
 
 #css定位
-driver.find_element_by_css_selector("#kw").send_keys(u"太白山天池")
-driver.find_element_by_css_selector("#su").click()
+# driver.find_element_by_css_selector("#kw").send_keys(u"太白山天池")
+# driver.find_element_by_css_selector("#su").click()
+
